@@ -1,0 +1,25 @@
+# Dockerfile para o Front-End (React)
+
+# Imagem base
+FROM node:14-alpine
+
+# Define o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copia o package.json e o package-lock.json para o contêiner
+COPY package*.json ./
+
+# Instala as dependências do projeto
+RUN npm install
+
+# Copia o restante dos arquivos do projeto para o contêiner
+COPY . .
+
+# Compila o código React
+RUN npm run build
+
+# Expondo a porta 3000 (porta padrão do React)
+EXPOSE 3000
+
+# Comando para rodar a aplicação
+CMD ["npm", "start"]

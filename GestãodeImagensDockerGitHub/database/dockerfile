@@ -1,0 +1,12 @@
+# Dockerfile para o Banco de Dados (PostgreSQL)
+
+# Imagem base oficial do PostgreSQL
+FROM postgres:13
+
+# Define variáveis de ambiente para configuração do banco
+ENV POSTGRES_USER=admin
+ENV POSTGRES_PASSWORD=secret
+ENV POSTGRES_DB=myapp_db
+
+# Expondo a porta 5432 (porta padrão do PostgreSQL)
+EXPOSE 5432

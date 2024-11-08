@@ -1,0 +1,22 @@
+# Dockerfile para o Back-End (Node.js + Express)
+
+# Imagem base
+FROM node:14
+
+# Define o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copia o package.json e o package-lock.json para o contêiner
+COPY package*.json ./
+
+# Instala as dependências do projeto
+RUN npm install
+
+# Copia o restante dos arquivos do projeto para o contêiner
+COPY . .
+
+# Expondo a porta 5000 (porta padrão do Express)
+EXPOSE 5000
+
+# Comando para rodar a aplicação
+CMD ["npm", "start"]
